@@ -5,30 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Inicio</title>
 </head>
-<body>
-    <img src="assets/img/fondo.jpg" width="100%" height="710px" alt="">
-    <main>
-        <div class="section-menu">
-            <img class="section-img" src="assets/img/joystickMenu.png" alt="joystick menu">
-            <div id="section-link" class="section-link-1">
-                <a href="html/home.html">Comenzar</a>
+<body id="body">
+    <header id="headerPageVisibility" class="header">
+        <a href="index.html">
+            <img class="header-img" src="/assets/img/logo.png" alt="logo">
+        </a>
+        <h1>Ahorcadito</h1>
+        <div class="header-hashtag">
+            <p>#Oracle</p>
+            <p>#AluraLatam</p>
+        </div>
+    </header>
+
+    <aside id="startMenuVisibility">
+        <div class="aside-start__menu">
+            <div class="aside-start__button">
+                <button id="startButton">Start</button>
             </div>
-            <div id="section-link" class="section-link-2">
-                <a href="">Añadir palabra</a>
+            <div class="aside-add__button">
+                <button id="addButton">Add word</button>
             </div>
         </div>
-        <form class="section-textarea">
+        <form id="asideTextarea">
                 <label>
-                    <input maxlength="8" autofocus placeholder="Max 8 letras">
+                    <input 
+                        onkeypress="return (event.charCode == 241 || (event.charCode >= 97 && event.charCode <= 122))" 
+                        autofocus id="asideInputValue" 
+                        class="input-hidden" 
+                        maxlength="8" 
+                        placeholder="Max 8 letras">
                 </label>
                 <div class="buttons">
-                    <button type="submit">Enviar</button>
-                    <button type="reset">Reiniciar</button>
+                    <button id="sendButton" class="button" type="submit">Send and start</button>
+                    <button class="button" type="reset">Reset</button>
                 </div>
             </form>
+    </aside>
+
+    <main id="mainPageVisibility">
+        <div>
+            <div class="main-image">
+                
+            </div>
+            <form class="main-form">
+                <input type="text" placeholder="Correctas">
+                <br>
+                <input id="underscore" type="text" placeholder="Guiones">
+                <br>
+                <input type="text" placeholder="Equivocadas">
+                <br>
+                <div>
+                    <button id="startGameButton">Start Game</button>
+                    <br>
+                    <button id="endGameButton">End Game</button>
+                </div>
+            </form>
+        </div>
     </main>
+
+     <footer id="footerPageVisibility" class="footer">
+        <div class="footer__red-social">
+            <a href="https://www.linkedin.com/in/gabriel-augusto-rotger/" target="_blank">
+                <img alt="linkedin icon" src='/assets/img/linkedin.png' title="linkedin" alt="red social" />
+            </a>
+            <a href="https://github.com/rotgergabriel/Oracle-Alura-Latam-Challenge-Sprint-02" target="_blank">
+                <img alt="github icon" src='/assets/img/github.png' title="github" alt="red social" />
+            </a>
+        </div>
+            <p class="footer__browser">&copy; 2022 - <a href="https://github.com/rotgergabriel/Oracle-Alura-Latam-Challenge-Sprint-02">#ChallengeTwo</a></p>
+            <p class="footer__dev"> Rotger Gabriel Augusto / rotgergabriel@gmail.com </p>
+    </footer>
+    <script src="/js/index.js"></script>
 </body>
 </html>
