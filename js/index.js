@@ -73,12 +73,19 @@ startGameButton.addEventListener('click', (event)=> {
     let randomWord = randomSecretWord(words)
     console.log(words[randomWord])
 
+    getUnderscore(randomWord)
+})
+
+//Underscore function
+function getUnderscore (randomWord) {
     let wordFill = words[randomWord].split('')
                                     .fill('_ ')
                                     .join('')
     console.log(wordFill)
     underscore.value = wordFill
-})
+}
+
+
 
 
 
