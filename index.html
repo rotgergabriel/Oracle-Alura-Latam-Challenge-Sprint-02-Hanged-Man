@@ -47,20 +47,26 @@
 
     <main id="mainPageVisibility">
         <div>
-            <div class="main-image">
-                
+            <div class="main-display">
+                <p id="main-display_result"></p>
             </div>
             <form class="main-form">
-                <input type="text" placeholder="Correctas">
+                <input
+                    onkeypress="return (event.charCode == 241 || (event.charCode >= 97 && event.charCode <= 122))" 
+                    id="incomingLetter" 
+                    type="text"
+                    maxlength="1"  
+                    placeholder="Ingresa una letra"
+                    >
                 <br>
                 <input id="underscore" type="text" placeholder="Guiones">
                 <br>
-                <input type="text" placeholder="Equivocadas">
+                <input id="wrongLetters" type="text" placeholder="Equivocadas">
                 <br>
                 <div>
                     <button id="startGameButton">Start Game</button>
                     <br>
-                    <button id="endGameButton">End Game</button>
+                    <button id="exitGameButton">Exit</button>
                 </div>
             </form>
         </div>

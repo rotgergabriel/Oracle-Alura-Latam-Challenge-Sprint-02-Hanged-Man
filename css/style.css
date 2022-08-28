@@ -108,22 +108,39 @@ body {
     visibility: hidden;
 }
 
-.main-image {
+.main-display {
     margin-left: 25%;
     display: inline-block;
     width: 50%;
     height: 370px;
     background-color: rgba(128, 128, 128, 0.51);
+    text-align: center;
 }
+
+#main-display_result {
+    display: inline-block;
+    margin-top: 177px;
+}
+
 .main-form {
     text-align: center;
-    margin: 0px auto;
+    margin: auto auto;
 }
 
 .main-form input {
     border: 0px;
     text-align: center;
     outline: none;
+}
+
+#incomingLetter {
+    visibility: hidden;
+}
+#underscore {
+    visibility: hidden;
+}
+#wrongLetters {
+    visibility: hidden;
 }
 
 .main-form div {

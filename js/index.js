@@ -10,8 +10,11 @@ const sendButton = document.getElementById('sendButton')
 
 //Sector <main> buttons
 const startGameButton = document.getElementById('startGameButton')
-const endGameButton = document.getElementById('endGameButton')
+const exitGameButton = document.getElementById('exitGameButton')
+const incomingLetter = document.getElementById('incomingLetter')
 const underscore = document.getElementById('underscore')
+const wrongLetters = document.getElementById('wrongLetters')
+const mainDisplayResult = document.getElementById('main-display_result')
 
 //visibility behavior buttons
 const headerPageVisibility = document.getElementById('headerPageVisibility')
@@ -19,7 +22,8 @@ const mainPageVisibility = document.getElementById('mainPageVisibility')
 const footerPageVisibility = document.getElementById('footerPageVisibility')
 const startMenuVisibility = document.getElementById('startMenuVisibility')
 
-const words = ['AVION','PAISAJE','AUTO','COMIDA','GATO','PERRO']
+const words = ['AVION','PAISAJE','AUTO','COMIDA','GATO','PERRO', 'BANANA']
+const wrong = []
 
 //Behavior of all buttons in the aside sector
 
@@ -70,21 +74,83 @@ function randomSecretWord(words) {
 startGameButton.addEventListener('click', (event)=> {
     event.preventDefault()
 
-    let randomWord = randomSecretWord(words)
-    console.log(words[randomWord])
+    startGameButton.style.display = 'none'
+    incomingLetter.style.visibility = 'visible'
+    underscore.style.visibility = 'visible'
+    wrongLetters.style.visibility = 'visible'
 
-    getUnderscore(randomWord)
+    let indexRandomWord = randomSecretWord(words)
+    console.log(words[indexRandomWord])
+
+    getUnderscore(indexRandomWord)
+    getSecretLetter(indexRandomWord)
+    getWrongLetter(indexRandomWord)
 })
 
 //Underscore function
-function getUnderscore (randomWord) {
-    let wordFill = words[randomWord].split('')
-                                    .fill('_ ')
-                                    .join('')
-    console.log(wordFill)
-    underscore.value = wordFill
+const getUnderscore = (index) => {
+    let wordUnderscores = words[index].split('')
+                                            .fill('_ ')
+                                            .join('')
+    console.log('getUnderscore', wordUnderscores)
+    underscore.value = wordUnderscores
 }
 
+// Get secret letter function
+function getSecretLetter (index) {
+
+    const splitWord = words[index].split('')
+    const wordUnderscores = words[index].split('')
+                                        .fill('_ ')
+
+    incomingLetter.addEventListener('keyup', (event) => {
+        let letter = event.key.toUpperCase()
+        
+        //Inserta la letra correcta en su posicion
+        for (let index = 0; index < splitWord.length; index++) {
+            if(letter == splitWord[index]) {
+                let position = splitWord.indexOf(letter, index)
+                wordUnderscores.splice(position, 1, letter)
+                underscore.value = wordUnderscores.join('')
+                mainDisplayResult.innerText = 'Excellent'
+                setTimeout(() => {
+                    mainDisplayResult.innerText = ''
+                }, 1000);
+            }
+
+            //Mensaje 'Winner'
+            if(splitWord.length == underscore.value.length){
+                incomingLetter.style.display = 'none'
+                mainDisplayResult.innerText = 'WINNER'
+                setInterval(() => {
+                    mainDisplayResult.innerText = ''
+                }, 500);
+                setInterval(() => {
+                    mainDisplayResult.innerText = 'CONGRATULATIONS'
+                }, 1000);
+            }
+        }
+            incomingLetter.value = ''
+    })
+}
+
+//Get wrong letter function
+function getWrongLetter(indexWord) {
+
+    const wrongLettersUsed = []
+
+    incomingLetter.addEventListener('keyup', (event)=> {
+        let letter = event.key.toUpperCase()
+
+        if(!words[indexWord].includes(letter)) {
+            wrongLettersUsed.push(letter)
+        }
+
+        const auxArray = new Set(wrongLettersUsed)
+        let result = [...auxArray].join('-')
+        wrongLetters.value = result
+    })
+}
 
 
 
