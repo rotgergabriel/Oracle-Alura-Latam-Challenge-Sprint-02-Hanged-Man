@@ -106,7 +106,7 @@ function getSecretLetter (index) {
     incomingLetter.addEventListener('keyup', (event) => {
         let letter = event.key.toUpperCase()
         
-        //Inserta la letra correcta en su posicion
+        //Insert the correct letter in its position
         for (let index = 0; index < splitWord.length; index++) {
             if(letter == splitWord[index]) {
                 let position = splitWord.indexOf(letter, index)
@@ -118,7 +118,7 @@ function getSecretLetter (index) {
                 }, 1000);
             }
 
-            //Mensaje 'Winner / Congratulations'
+            //Message 'Winner / Congratulations'
             if(splitWord.length == underscore.value.length){
                 incomingLetter.style.display = 'none'
                 mainDisplayResult.innerText = 'WINNER'
@@ -152,7 +152,8 @@ function getWrongLetter(indexWord) {
     incomingLetter.addEventListener('keyup', (event)=> {
         
         let letter = event.key.toUpperCase()
-        
+
+        //Add wrong words
         if(!words[indexWord].includes(letter)) {
             lettersUsed.push(letter)
             mainDisplayResult.innerText = 'Error'
@@ -161,21 +162,22 @@ function getWrongLetter(indexWord) {
             }, 500);
         }
 
-        // const auxArray = new Set(lettersUsed)
-        // let result = [...auxArray].join(' - ')
-        // wrongLetters.value = result
-
+        //filter the input of equal wrong letters
         let result = lettersUsed.filter((item,index)=>{
             return lettersUsed.indexOf(item) === index;
         })
         wrongLetters.value = result
 
         let count = 1
+
+        //Add hangman image
         for (let index = 0; index <= result.length; index++) {
             if(result.length != img.length){
                 mainDisplay.style.backgroundImage = `url(/assets/img/img_ahorcado/${img[index]})`
                 count ++
             }
+            
+            //Message 'GAME OVER'
             if(count == img.length) {
                 incomingLetter.style.display = 'none'
                 underscore.style.visibility = 'hidden'
