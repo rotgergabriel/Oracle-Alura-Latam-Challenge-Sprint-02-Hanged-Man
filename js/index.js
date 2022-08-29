@@ -14,6 +14,7 @@ const exitGameButton = document.getElementById('exitGameButton')
 const incomingLetter = document.getElementById('incomingLetter')
 const underscore = document.getElementById('underscore')
 const wrongLetters = document.getElementById('wrongLetters')
+const mainDisplay = document.getElementById('mainDisplay')
 const mainDisplayResult = document.getElementById('main-display_result')
 
 //visibility behavior buttons
@@ -61,7 +62,7 @@ sendButton.addEventListener('click', (event) => {
         headerPageVisibility.style.display = 'flex'
         mainPageVisibility.style.visibility = 'visible'
         footerPageVisibility.style.display = 'flex'
-        console.log(words)
+        // console.log(words)
     }
 )
 
@@ -90,9 +91,8 @@ startGameButton.addEventListener('click', (event)=> {
 //Underscore function
 const getUnderscore = (index) => {
     let wordUnderscores = words[index].split('')
-                                            .fill('_ ')
-                                            .join('')
-    console.log('getUnderscore', wordUnderscores)
+                                        .fill('_ ')
+                                        .join('')
     underscore.value = wordUnderscores
 }
 
@@ -118,7 +118,7 @@ function getSecretLetter (index) {
                 }, 1000);
             }
 
-            //Mensaje 'Winner'
+            //Mensaje 'Winner / Congratulations'
             if(splitWord.length == underscore.value.length){
                 incomingLetter.style.display = 'none'
                 mainDisplayResult.innerText = 'WINNER'
@@ -137,18 +137,56 @@ function getSecretLetter (index) {
 //Get wrong letter function
 function getWrongLetter(indexWord) {
 
-    const wrongLettersUsed = []
+    const lettersUsed = []
+    const img = [
+    'img_01.png',
+    'img_02.png',
+    'img_03.png',
+    'img_04.png',
+    'img_05.png',
+    'img_06.png',
+    'img_07.png',
+    'img_08.png'
+    ]
 
     incomingLetter.addEventListener('keyup', (event)=> {
+        
         let letter = event.key.toUpperCase()
-
+        
         if(!words[indexWord].includes(letter)) {
-            wrongLettersUsed.push(letter)
+            lettersUsed.push(letter)
+            mainDisplayResult.innerText = 'Error'
+            setTimeout(() => {
+                mainDisplayResult.innerText = ''
+            }, 500);
         }
 
-        const auxArray = new Set(wrongLettersUsed)
-        let result = [...auxArray].join('-')
+        // const auxArray = new Set(lettersUsed)
+        // let result = [...auxArray].join(' - ')
+        // wrongLetters.value = result
+
+        let result = lettersUsed.filter((item,index)=>{
+            return lettersUsed.indexOf(item) === index;
+        })
         wrongLetters.value = result
+
+        let count = 1
+        for (let index = 0; index <= result.length; index++) {
+            if(result.length != img.length){
+                mainDisplay.style.backgroundImage = `url(/assets/img/img_ahorcado/${img[index]})`
+                count ++
+            }
+            if(count == img.length) {
+                incomingLetter.style.display = 'none'
+                underscore.style.visibility = 'hidden'
+                setInterval(() => {
+                    mainDisplayResult.innerText = ''
+                }, 500);
+                setInterval(() => {
+                    mainDisplayResult.innerText = 'GAME OVER'
+                }, 1000);
+            }
+        }
     })
 }
 

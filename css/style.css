@@ -108,13 +108,14 @@ body {
     visibility: hidden;
 }
 
-.main-display {
+#mainDisplay {
     margin-left: 25%;
     display: inline-block;
     width: 50%;
     height: 370px;
-    background-color: rgba(128, 128, 128, 0.51);
+    background-color: rgba(78, 194, 109, 0.83);
     text-align: center;
+    background-image: url(/assets/img/img_ahorcado/img_01.png);
 }
 
 #main-display_result {
