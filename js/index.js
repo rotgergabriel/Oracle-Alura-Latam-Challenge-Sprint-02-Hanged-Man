@@ -16,6 +16,8 @@ const underscore = document.getElementById('underscore')
 const wrongLetters = document.getElementById('wrongLetters')
 const mainDisplay = document.getElementById('mainDisplay')
 const mainDisplayResult = document.getElementById('main-display_result')
+const mainAudioStart = document.getElementById('mainAudioStart')
+const mainAudio = document.getElementById('mainAudio')
 
 //visibility behavior buttons
 const headerPageVisibility = document.getElementById('headerPageVisibility')
@@ -23,11 +25,32 @@ const mainPageVisibility = document.getElementById('mainPageVisibility')
 const footerPageVisibility = document.getElementById('footerPageVisibility')
 const startMenuVisibility = document.getElementById('startMenuVisibility')
 
-const words = ['AVION','PAISAJE','AUTO','COMIDA','GATO','PERRO', 'BANANA']
+const words = [
+    'AVION',
+    'PAISAJE',
+    'AUTO',
+    'COMIDA',
+    'GATO',
+    'PERRO', 
+    'MANZANA', 
+    'CARRO', 
+    'SALUD',
+    'AMOR',
+    'MAR',
+    'TIGRE',
+    'TANQUE',
+    'ARMA',
+    'INDIO'
+]
+
 const wrong = []
 
-//Behavior of all buttons in the aside sector
+//Sounds function
+function sounds(sound) {
+    mainAudio.innerHTML =`<audio src="/assets/sounds/${sound}" autoplay></audio>`
+}
 
+//Behavior of all buttons in the aside sector
 // Add button
 addButton.addEventListener('click', (event) => {
         event.preventDefault()
@@ -45,6 +68,7 @@ startButton.addEventListener('click', (event) => {
         headerPageVisibility.style.display = 'flex'
         mainPageVisibility.style.visibility = 'visible'
         footerPageVisibility.style.display = 'flex'
+        sounds('mario-bros-woo-hoo.mp3')
     }
 )
 
@@ -62,13 +86,14 @@ sendButton.addEventListener('click', (event) => {
         headerPageVisibility.style.display = 'flex'
         mainPageVisibility.style.visibility = 'visible'
         footerPageVisibility.style.display = 'flex'
-        // console.log(words)
+        sounds('mario-bros-lets-go.mp3')
+        console.log(words)
     }
 )
 
 //Random secret word function
 function randomSecretWord(words) {
-   return Math.round(Math.random() * (words.length - 1))
+   return Math.round(Math.random() * (words.length))
 }
 
 //Start game function
@@ -86,6 +111,7 @@ startGameButton.addEventListener('click', (event)=> {
     getUnderscore(indexRandomWord)
     getSecretLetter(indexRandomWord)
     getWrongLetter(indexRandomWord)
+    sounds('start-game.mp3')
 })
 
 //Underscore function
@@ -113,21 +139,26 @@ function getSecretLetter (index) {
                 wordUnderscores.splice(position, 1, letter)
                 underscore.value = wordUnderscores.join('')
                 mainDisplayResult.innerText = 'Excellent'
+                mainDisplayResult.style.color = 'darkgreen'
                 setTimeout(() => {
                     mainDisplayResult.innerText = ''
                 }, 1000);
+                sounds('mario-bros-coin.mp3')
             }
 
             //Message 'Winner / Congratulations'
             if(splitWord.length == underscore.value.length){
                 incomingLetter.style.display = 'none'
                 mainDisplayResult.innerText = 'WINNER'
+                    mainDisplayResult.style.color = 'darkblue'
                 setInterval(() => {
                     mainDisplayResult.innerText = ''
                 }, 500);
                 setInterval(() => {
                     mainDisplayResult.innerText = 'CONGRATULATIONS'
+                    mainDisplayResult.style.color = 'darkblue'
                 }, 1000);
+                sounds('mario-kart-64.mp3')
             }
         }
             incomingLetter.value = ''
@@ -157,26 +188,29 @@ function getWrongLetter(indexWord) {
         if(!words[indexWord].includes(letter)) {
             lettersUsed.push(letter)
             mainDisplayResult.innerText = 'Error'
+            mainDisplayResult.style.color = 'darkorange'
             setTimeout(() => {
                 mainDisplayResult.innerText = ''
             }, 500);
+            sounds('mario-bros-ooh.mp3')
         }
 
         //filter the input of equal wrong letters
         let result = lettersUsed.filter((item,index)=>{
             return lettersUsed.indexOf(item) === index;
         })
-        wrongLetters.value = result
+        wrongLetters.value = result.join('-')
 
-        let count = 1
-
+        
         //Add hangman image
+        let count = 1
+        
         for (let index = 0; index <= result.length; index++) {
             if(result.length != img.length){
                 mainDisplay.style.backgroundImage = `url(/assets/img/img_ahorcado/${img[index]})`
                 count ++
             }
-            
+
             //Message 'GAME OVER'
             if(count == img.length) {
                 incomingLetter.style.display = 'none'
@@ -186,7 +220,9 @@ function getWrongLetter(indexWord) {
                 }, 500);
                 setInterval(() => {
                     mainDisplayResult.innerText = 'GAME OVER'
+                    mainDisplayResult.style.color = 'darkred'
                 }, 1000);
+                sounds('mario-kart-lose-1.mp3')
             }
         }
     })

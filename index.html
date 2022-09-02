@@ -6,49 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Inicio</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!-- Ness.css minify -->
+    <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
+    <title>SNES-Games</title>
 </head>
 <body id="body">
     <header id="headerPageVisibility" class="header">
         <a href="index.html">
-            <img class="header-img" src="/assets/img/logo.png" alt="logo">
+            <i id="headerLogo" class="snes-jp-logo is-small"></i>
         </a>
-        <h1>Ahorcadito</h1>
+        <h1 class="nes-text is-primary">SNES Games</h1>
         <div class="header-hashtag">
-            <p>#Oracle</p>
-            <p>#AluraLatam</p>
+            <p><span class="first-letter">#</span>Oracle</p>
+            <p><span class="first-letter">#</span>AluraLatam</p>
         </div>
     </header>
 
     <aside id="startMenuVisibility">
         <div class="aside-start__menu">
             <div class="aside-start__button">
-                <button id="startButton">Start</button>
+                <button class="nes-btn is-primary" id="startButton">Start</button>
             </div>
             <div class="aside-add__button">
-                <button id="addButton">Add word</button>
+                <button class="nes-btn is-primary" id="addButton">New word</button>
             </div>
         </div>
         <form id="asideTextarea">
                 <label>
                     <input 
+                        class="input-hidden nes-input" 
                         onkeypress="return (event.charCode == 241 || (event.charCode >= 97 && event.charCode <= 122))" 
-                        autofocus id="asideInputValue" 
-                        class="input-hidden" 
+                        autofocus 
+                        id="asideInputValue" 
                         maxlength="8" 
                         placeholder="Max 8 letras">
                 </label>
-                <div class="buttons">
-                    <button id="sendButton" class="button" type="submit">Send and start</button>
-                    <button class="button" type="reset">Reset</button>
+                <div>
+                    <button id="sendButton" class="nes-btn is-success" type="submit">Send and start</button>
+                    <button class="nes-btn is-warning" type="reset">Reset</button>
                 </div>
             </form>
     </aside>
 
     <main id="mainPageVisibility">
+        <div id="mainAudio"></div>
         <div>
-            <div id="mainDisplay">
-                <p id="main-display_result"></p>
+            <div class="nes-container with-title">
+                <p id="mainTitle" class="title">Hanged-man</p>
+                <div id="mainDisplay">
+                    <p id="main-display_result"></p>
+                </div>
             </div>
             <form class="main-form">
                 <input
@@ -56,7 +66,7 @@
                     id="incomingLetter" 
                     type="text"
                     maxlength="1"  
-                    placeholder="Ingresa una letra"
+                    placeholder="Ingresa una letra aquí"
                     >
                 <br>
                 <input id="underscore" type="text">
@@ -64,9 +74,9 @@
                 <input id="wrongLetters" type="text">
                 <br>
                 <div>
-                    <button id="startGameButton">Start Game</button>
+                    <button class="nes-btn is-success" id="startGameButton">Start Game</button>
                     <br>
-                    <button id="exitGameButton">Exit</button>
+                    <button class="nes-btn is-error" id="exitGameButton">Exit</button>
                 </div>
             </form>
         </div>
@@ -75,10 +85,10 @@
      <footer id="footerPageVisibility" class="footer">
         <div class="footer__red-social">
             <a href="https://www.linkedin.com/in/gabriel-augusto-rotger/" target="_blank">
-                <img alt="linkedin icon" src='/assets/img/linkedin.png' title="linkedin" alt="red social" />
+                <i class="nes-icon linkedin is-small"></i>
             </a>
             <a href="https://github.com/rotgergabriel/Oracle-Alura-Latam-Challenge-Sprint-02" target="_blank">
-                <img alt="github icon" src='/assets/img/github.png' title="github" alt="red social" />
+                <i class="nes-icon github is-small"></i>
             </a>
         </div>
             <p class="footer__browser">&copy; 2022 - <a href="https://github.com/rotgergabriel/Oracle-Alura-Latam-Challenge-Sprint-02">#ChallengeTwo</a></p>
