@@ -216,7 +216,7 @@ function getWrongLetter(indexWord) {
         
         for (let index = 0; index <= result.length; index++) {
             if(result.length != img.length){
-                mainDisplay.style.backgroundImage = `url(../assets/img_ahorcado/${img[index]})`
+                mainDisplay.style.backgroundImage = `url(assets/img_ahorcado/${img[index]})`
                 count ++
             }
 
