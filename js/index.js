@@ -135,9 +135,11 @@ function getSecretLetter (index) {
     const wordUnderscores = words[index].split('')
                                         .fill('_ ')
 
-    incomingLetter.addEventListener('keyup', (event) => {
+    var counter = 0
+    incomingLetter.addEventListener('keyup', function (event) {
         let letter = event.key.toUpperCase()
-        
+        letter.textContent = `key up ${++counter}`
+
         //Insert the correct letter in its position
         for (let index = 0; index < splitWord.length; index++) {
             if(letter == splitWord[index]) {
@@ -169,8 +171,44 @@ function getSecretLetter (index) {
             }
         }
             incomingLetter.value = ''
-    })
-}
+    });
+    // incomingLetter.addEventListener('keyup', (event) => {
+    //     let letter = event.key.toUpperCase()
+        
+        // //Insert the correct letter in its position
+        // for (let index = 0; index < splitWord.length; index++) {
+        //     if(letter == splitWord[index]) {
+        //         let position = splitWord.indexOf(letter, index)
+        //         wordUnderscores.splice(position, 1, letter)
+        //         underscore.value = wordUnderscores.join('')
+        //         mainDisplayResult.innerText = 'Excellent'
+        //         mainDisplayResult.style.color = 'darkgreen'
+        //         setTimeout(() => {
+        //             mainDisplayResult.innerText = ''
+        //         }, 1000);
+        //         sounds('mario-bros-coin.mp3')
+        //     }
+
+        //     //Message 'Winner / Congratulations'
+        //     if(splitWord.length == underscore.value.length){
+        //         incomingLetter.style.display = 'none'
+        //         mainDisplayResult.innerText = 'Yeah'
+        //             mainDisplayResult.style.color = 'darkblue'
+        //         setInterval(() => {
+        //             mainDisplayResult.innerText = ''
+        //         }, 500);
+        //         setInterval(() => {
+        //             mainDisplayResult.innerText = 'WINNER'
+        //             mainDisplayResult.style.color = 'darkgreen'
+        //         }, 1000);
+        //         menuSounds('')
+        //         sounds('mario-kart-64.mp3')
+        //     }
+        // }
+        //     incomingLetter.value = ''
+
+    }
+
 
 //Get wrong letter function
 function getWrongLetter(indexWord) {
