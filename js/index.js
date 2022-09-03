@@ -47,11 +47,11 @@ const words = [
 
 //Sounds functions
 function menuSounds(sound) {
-    mainMenuAudio.innerHTML =`<audio src="/assets/sounds/${sound}" autoplay></audio>`
+    mainMenuAudio.innerHTML =`<audio src="assets/sounds/${sound}" autoplay></audio>`
 }
 
 function sounds(sound) {
-    mainAudio.innerHTML =`<audio src="/assets/sounds/${sound}" autoplay></audio>`
+    mainAudio.innerHTML =`<audio src="assets/sounds/${sound}" autoplay></audio>`
 }
 
 //Behavior of all buttons in the aside sector
@@ -216,7 +216,7 @@ function getWrongLetter(indexWord) {
         
         for (let index = 0; index <= result.length; index++) {
             if(result.length != img.length){
-                mainDisplay.style.backgroundImage = `url(/assets/img_ahorcado/${img[index]})`
+                mainDisplay.style.backgroundImage = `url(assets/img_ahorcado/${img[index]})`
                 count ++
             }
 

@@ -3,7 +3,7 @@ html, body, pre, code, kbd, samp {
 }
 
 body {
-    background-image: url(assets/main-bg.png);
+    background-image: url(/assets/main-bg.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -95,7 +95,7 @@ body {
     height: 340px;
     background-color: rgba(103, 101, 101, 0.83);
     text-align: center;
-    background-image: url(assets/img_ahorcado/img_01.png);
+    background-image: url(/assets/img_ahorcado/img_01.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
