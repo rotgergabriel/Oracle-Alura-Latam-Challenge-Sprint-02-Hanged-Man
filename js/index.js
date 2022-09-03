@@ -12,6 +12,7 @@ const sendButton = document.getElementById('sendButton')
 const startGameButton = document.getElementById('startGameButton')
 const exitGameButton = document.getElementById('exitGameButton')
 const incomingLetter = document.getElementById('incomingLetter')
+const enterLetter = document.getElementById('enterLetter')
 const underscore = document.getElementById('underscore')
 const wrongLetters = document.getElementById('wrongLetters')
 const mainHeardImg = document.getElementById('mainHeardImg')
@@ -45,6 +46,8 @@ const words = [
     'CAMION'
 ]
 
+let letter
+
 //Sounds functions
 function menuSounds(sound) {
     mainMenuAudio.innerHTML =`<audio src="/assets/sounds/${sound}" autoplay></audio>`
@@ -66,7 +69,6 @@ addButton.addEventListener('click', (event) => {
 startButton.addEventListener('click', (event) => {
         event.preventDefault()
 
-        body.style.backgroundColor = 'white'
         asideTextarea.style.visibility = 'hidden'
         startMenuVisibility.style.visibility = 'hidden'
         headerPageVisibility.style.display = 'flex'
@@ -85,7 +87,6 @@ sendButton.addEventListener('click', (event) => {
             words.push(asideInputValue.value.toUpperCase())
         }
 
-        body.style.backgroundColor = 'white'
         asideTextarea.style.visibility = 'hidden'
         startMenuVisibility.style.visibility = 'hidden'
         headerPageVisibility.style.display = 'flex'
@@ -110,6 +111,7 @@ startGameButton.addEventListener('click', (event)=> {
     incomingLetter.style.visibility = 'visible'
     underscore.style.visibility = 'visible'
     wrongLetters.style.visibility = 'visible'
+    enterLetter.style.display = 'inline'
 
     let indexRandomWord = randomSecretWord(words)
     console.log(words[indexRandomWord])
@@ -135,11 +137,11 @@ function getSecretLetter (index) {
     const wordUnderscores = words[index].split('')
                                         .fill('_ ')
 
-    var counter = 0
-    incomingLetter.addEventListener('keyup', function (event) {
-        let letter = event.key.toUpperCase()
-        letter.textContent = `key up ${++counter}`
+    enterLetter.addEventListener('click', (event) => {
 
+        event.preventDefault()
+        letter = incomingLetter.value.toUpperCase()
+        
         //Insert the correct letter in its position
         for (let index = 0; index < splitWord.length; index++) {
             if(letter == splitWord[index]) {
@@ -171,44 +173,8 @@ function getSecretLetter (index) {
             }
         }
             incomingLetter.value = ''
-    });
-    // incomingLetter.addEventListener('keyup', (event) => {
-    //     let letter = event.key.toUpperCase()
-        
-        // //Insert the correct letter in its position
-        // for (let index = 0; index < splitWord.length; index++) {
-        //     if(letter == splitWord[index]) {
-        //         let position = splitWord.indexOf(letter, index)
-        //         wordUnderscores.splice(position, 1, letter)
-        //         underscore.value = wordUnderscores.join('')
-        //         mainDisplayResult.innerText = 'Excellent'
-        //         mainDisplayResult.style.color = 'darkgreen'
-        //         setTimeout(() => {
-        //             mainDisplayResult.innerText = ''
-        //         }, 1000);
-        //         sounds('mario-bros-coin.mp3')
-        //     }
-
-        //     //Message 'Winner / Congratulations'
-        //     if(splitWord.length == underscore.value.length){
-        //         incomingLetter.style.display = 'none'
-        //         mainDisplayResult.innerText = 'Yeah'
-        //             mainDisplayResult.style.color = 'darkblue'
-        //         setInterval(() => {
-        //             mainDisplayResult.innerText = ''
-        //         }, 500);
-        //         setInterval(() => {
-        //             mainDisplayResult.innerText = 'WINNER'
-        //             mainDisplayResult.style.color = 'darkgreen'
-        //         }, 1000);
-        //         menuSounds('')
-        //         sounds('mario-kart-64.mp3')
-        //     }
-        // }
-        //     incomingLetter.value = ''
-
-    }
-
+    })
+}
 
 //Get wrong letter function
 function getWrongLetter(indexWord) {
@@ -225,9 +191,8 @@ function getWrongLetter(indexWord) {
     'img_08.png'
     ]
 
-    incomingLetter.addEventListener('keyup', (event)=> {
-        
-        let letter = event.key.toUpperCase()
+    enterLetter.addEventListener('click', (event)=> {
+        event.preventDefault()
 
         //Add wrong words
         if(!words[indexWord].includes(letter)) {

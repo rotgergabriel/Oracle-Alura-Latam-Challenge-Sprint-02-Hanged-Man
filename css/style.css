@@ -125,6 +125,15 @@ body {
     margin-top: -10px;
 }
 
+#enterLetter {
+    margin-top: 15px;
+    display: none;
+}
+
+#exitGameButton {
+    margin-bottom: -15px;
+}
+
 #incomingLetter {
     visibility: hidden;
     background-color: black;
