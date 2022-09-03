@@ -11,14 +11,14 @@
     <link href="https://unpkg.com/nes.css@2.3.0/css/nes.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link href="https://unpkg.com/nes.css/css/nes.css" rel="stylesheet" />
-    <title>SNES-Games</title>
+    <title>PIXELS-Games</title>
 </head>
 <body id="body">
     <header id="headerPageVisibility" class="header">
         <a href="index.html">
             <i id="headerLogo" class="snes-jp-logo is-small"></i>
         </a>
-        <h1 class="nes-text is-primary">SNES Games</h1>
+        <h1 class="nes-text is-primary">PIXELS</h1>
         <div class="header-hashtag">
             <p><span class="first-letter">#</span>Oracle</p>
             <p><span class="first-letter">#</span>AluraLatam</p>
@@ -52,6 +52,7 @@
     </aside>
 
     <main id="mainPageVisibility">
+        <div id="mainMenuAudio"></div>
         <div id="mainAudio"></div>
         <div>
             <div class="nes-container with-title">
@@ -66,12 +67,12 @@
                     id="incomingLetter" 
                     type="text"
                     maxlength="1"  
-                    placeholder="Ingresa una letra aquí"
+                    placeholder="---> Tu letra aquí <---"
                     >
                 <br>
-                <input id="underscore" type="text">
+                <input id="underscore" disabled type="text">
                 <br>
-                <input id="wrongLetters" type="text">
+                <input id="wrongLetters" disabled type="text">
                 <br>
                 <div>
                     <button class="nes-btn is-success" id="startGameButton">Start Game</button>

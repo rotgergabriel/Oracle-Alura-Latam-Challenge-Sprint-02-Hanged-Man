@@ -88,7 +88,7 @@ html, body, pre, code, kbd, samp {
     height: 340px;
     background-color: rgba(103, 101, 101, 0.83);
     text-align: center;
-    background-image: url(/assets/img/img_ahorcado/img_01.png);
+    background-image: url(/assets/img_ahorcado/img_01.png);
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -111,6 +111,7 @@ html, body, pre, code, kbd, samp {
     width: 50%;
     text-align: center;
     outline: none;
+    
 }
 
 .main-form div {
@@ -119,10 +120,15 @@ html, body, pre, code, kbd, samp {
 
 #incomingLetter {
     visibility: hidden;
+    background-color: black;
+    font-size: 12px;
+    color: white;
 }
+
 #underscore {
     visibility: hidden;
 }
+
 #wrongLetters {
     visibility: hidden;
 }
@@ -186,12 +192,22 @@ html, body, pre, code, kbd, samp {
         font-size: 6px;
     }
 
+    #asideTextarea {
+        top: 60%;
+        text-align: center;
+        font-size: 9px;
+    }
+
     #mainTitle {
         font-size: 9px;
     }
 
     #main-display_result {
-        font-size: 5px;
+        font-size: 8px;
+    }
+
+    #incomingLetter {
+        font-size: 6px;
     }
 
     .footer {
