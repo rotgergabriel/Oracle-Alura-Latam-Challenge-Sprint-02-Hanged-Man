@@ -47,11 +47,11 @@ const words = [
 
 //Sounds functions
 function menuSounds(sound) {
-    mainMenuAudio.innerHTML =`<audio src="../assets/sounds/${sound}" autoplay></audio>`
+    mainMenuAudio.innerHTML =`<audio src="assets/sounds/${sound}" autoplay></audio>`
 }
 
 function sounds(sound) {
-    mainAudio.innerHTML =`<audio src="../assets/sounds/${sound}" autoplay></audio>`
+    mainAudio.innerHTML =`<audio src="assets/sounds/${sound}" autoplay></audio>`
 }
 
 //Behavior of all buttons in the aside sector
