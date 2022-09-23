@@ -160,7 +160,8 @@ function getSecretLetter (index) {
             if(splitWord.length == underscore.value.length){
                 incomingLetter.style.display = 'none'
                 mainDisplayResult.innerText = 'Yeah'
-                    mainDisplayResult.style.color = 'darkblue'
+                mainDisplayResult.style.color = 'darkblue'
+                enterLetter.style.display = 'none'
                 setInterval(() => {
                     mainDisplayResult.innerText = ''
                 }, 500);
@@ -198,7 +199,7 @@ function getWrongLetter(indexWord) {
         if(!words[indexWord].includes(letter)) {
             lettersUsed.push(letter)
             mainDisplayResult.innerText = 'Error'
-            mainDisplayResult.style.color = 'darkorange'
+            mainDisplayResult.style.color = 'darkred'
             setTimeout(() => {
                 mainDisplayResult.innerText = ''
             }, 500);
@@ -227,11 +228,12 @@ function getWrongLetter(indexWord) {
             if(count == img.length) {
                 incomingLetter.style.display = 'none'
                 underscore.style.visibility = 'hidden'
+                enterLetter.style.display = 'none'
                 setInterval(() => {
-                    mainDisplayResult.innerText = ''
+                    mainDisplayResult.innerText = 'Game Over'
                 }, 500);
                 setInterval(() => {
-                    mainDisplayResult.innerText = 'GAME OVER'
+                    mainDisplayResult.innerText = `La palabra es: ${words[indexWord]}`
                     mainDisplayResult.style.color = 'darkred'
                 }, 1000);
                 menuSounds('')
