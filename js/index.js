@@ -1,6 +1,3 @@
-//Body styles
-const body = document.getElementById('body')
-
 //Sector <aside> buttons
 const addButton = document.getElementById('addButton')
 const asideTextarea = document.getElementById('asideTextarea')
@@ -230,10 +227,10 @@ function getWrongLetter(indexWord) {
                 underscore.style.visibility = 'hidden'
                 enterLetter.style.display = 'none'
                 setInterval(() => {
-                    mainDisplayResult.innerText = 'Game Over'
+                    mainDisplayResult.innerText = 'Game over'
                 }, 500);
                 setInterval(() => {
-                    mainDisplayResult.innerText = `La palabra es: ${words[indexWord]}`
+                    mainDisplayResult.innerText = `the word is:${words[indexWord]}`
                     mainDisplayResult.style.color = 'darkred'
                 }, 1000);
                 menuSounds('')
